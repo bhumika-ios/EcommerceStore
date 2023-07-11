@@ -14,6 +14,7 @@
 		AC8A20192A5D6E010098605D /* EcommerceStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8A20182A5D6E010098605D /* EcommerceStoreTests.swift */; };
 		AC8A20232A5D6E010098605D /* EcommerceStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8A20222A5D6E010098605D /* EcommerceStoreUITests.swift */; };
 		AC8A20252A5D6E010098605D /* EcommerceStoreUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8A20242A5D6E010098605D /* EcommerceStoreUITestsLaunchTests.swift */; };
+		AC8A20332A5D6E760098605D /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8A20322A5D6E760098605D /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		AC8A201E2A5D6E010098605D /* EcommerceStoreUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EcommerceStoreUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC8A20222A5D6E010098605D /* EcommerceStoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcommerceStoreUITests.swift; sourceTree = "<group>"; };
 		AC8A20242A5D6E010098605D /* EcommerceStoreUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcommerceStoreUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AC8A20322A5D6E760098605D /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		AC8A20062A5D6DFF0098605D /* EcommerceStore */ = {
 			isa = PBXGroup;
 			children = (
+				AC8A20312A5D6E580098605D /* Model */,
 				AC8A20072A5D6DFF0098605D /* EcommerceStoreApp.swift */,
 				AC8A20092A5D6DFF0098605D /* ContentView.swift */,
 				AC8A200B2A5D6E010098605D /* Assets.xcassets */,
@@ -125,6 +128,14 @@
 				AC8A20242A5D6E010098605D /* EcommerceStoreUITestsLaunchTests.swift */,
 			);
 			path = EcommerceStoreUITests;
+			sourceTree = "<group>";
+		};
+		AC8A20312A5D6E580098605D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AC8A20322A5D6E760098605D /* Product.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +270,7 @@
 			files = (
 				AC8A200A2A5D6DFF0098605D /* ContentView.swift in Sources */,
 				AC8A20082A5D6DFF0098605D /* EcommerceStoreApp.swift in Sources */,
+				AC8A20332A5D6E760098605D /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
