@@ -16,6 +16,8 @@
 		AC8A20252A5D6E010098605D /* EcommerceStoreUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8A20242A5D6E010098605D /* EcommerceStoreUITestsLaunchTests.swift */; };
 		AC8A20332A5D6E760098605D /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8A20322A5D6E760098605D /* Product.swift */; };
 		AC8A20382A5D6F2A0098605D /* APIServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8A20372A5D6F2A0098605D /* APIServices.swift */; };
+		AC8A203A2A5D6FF20098605D /* ProuctViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8A20392A5D6FF20098605D /* ProuctViewModel.swift */; };
+		AC8A203C2A5D70690098605D /* products.json in Resources */ = {isa = PBXBuildFile; fileRef = AC8A203B2A5D70690098605D /* products.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		AC8A20242A5D6E010098605D /* EcommerceStoreUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcommerceStoreUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AC8A20322A5D6E760098605D /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		AC8A20372A5D6F2A0098605D /* APIServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServices.swift; sourceTree = "<group>"; };
+		AC8A20392A5D6FF20098605D /* ProuctViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProuctViewModel.swift; sourceTree = "<group>"; };
+		AC8A203B2A5D70690098605D /* products.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = products.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				AC8A20322A5D6E760098605D /* Product.swift */,
+				AC8A203B2A5D70690098605D /* products.json */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				AC8A20372A5D6F2A0098605D /* APIServices.swift */,
+				AC8A20392A5D6FF20098605D /* ProuctViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -253,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC8A203C2A5D70690098605D /* products.json in Resources */,
 				AC8A200F2A5D6E010098605D /* Preview Assets.xcassets in Resources */,
 				AC8A200C2A5D6E010098605D /* Assets.xcassets in Resources */,
 			);
@@ -281,6 +288,7 @@
 			files = (
 				AC8A200A2A5D6DFF0098605D /* ContentView.swift in Sources */,
 				AC8A20082A5D6DFF0098605D /* EcommerceStoreApp.swift in Sources */,
+				AC8A203A2A5D6FF20098605D /* ProuctViewModel.swift in Sources */,
 				AC8A20382A5D6F2A0098605D /* APIServices.swift in Sources */,
 				AC8A20332A5D6E760098605D /* Product.swift in Sources */,
 			);
