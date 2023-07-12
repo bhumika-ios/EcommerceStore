@@ -12,6 +12,8 @@ extension Color {
     static let secondaryBackground: Color = Color("SecondaryBackground")
     static let tertiary: Color = Color("tertiary")
     static let darkText: Color = Color("darkText")
+    static let green: Color = Color("green")
+    static let blue: Color = Color("Blue").opacity(0.2)
     
     /// Change color of the border shadow depending on the user when he click sign in on LoginView
     /// - Parameter condition: an optional bool that will affect the color that is returned
