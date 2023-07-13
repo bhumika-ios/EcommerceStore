@@ -17,7 +17,7 @@ class APIServices: APIServicesProtocol {
     /// Shared Signleton of the api calls
     static let shared = APIServices()
     private let baseURL = "https://fakestoreapi.com/products"
-    private let userURL = "https://randomuser.me/api/"
+ 
     private let apiCall = URLSession.shared
     
     /// Using ProductListEndpoint to generate the right api endpoint for Fake Shopping API
