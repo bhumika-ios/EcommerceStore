@@ -17,25 +17,28 @@ struct CustomPicker: View {
                     Button(action: {
                         withAnimation(.spring()){
                             choosenCategory = category
+                             
                         }
+                        
                     }){
                         Text(category.rawValue)
                             .bold()
                             .font(.caption2)
-                            .padding(8)
+                            .padding()
                             .multilineTextAlignment(.center)
                             .foregroundColor(choosenCategory == category ? .white : .accentColor)
                     }
                     .frame(height: 40)
-                    .background(choosenCategory == category ? Color.accentColor : Color("Blue"))
+                    .background(choosenCategory == category ? Color.green : Color("Blue"))
                     .cornerRadius(5)
+                    .padding()
                 }
             }
         }
-        .frame(height: 40)
-        .background(Color(.secondaryBackground))
-        .cornerRadius(5)
-        .shadow(color: .darkText.opacity(0.2), radius:2, x: 0.0, y: 0.0)
+     //   .frame(height: 40)
+//        .background(Color.secondaryBackground)
+//        .cornerRadius(5)
+//        .shadow(color: .darkText.opacity(0.2), radius:2, x: 0.0, y: 0.0)
     }
 }
 
