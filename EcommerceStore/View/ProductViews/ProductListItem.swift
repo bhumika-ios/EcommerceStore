@@ -20,14 +20,15 @@ struct ProductListItem: View {
                 .padding(.horizontal)
             Text("\(product.price.format(f: ".2"))$").bold()
                 .foregroundColor(.darkText)
-            HStack(spacing: 2) {
-                Text("\(product.formatedRating)").font(.title3)
-                    .foregroundColor(.darkText)
-                Text("(\(product.rating.manualCount))").font(.caption2)
-                    .foregroundColor(.secondary)
-                    .offset(y: 3)
-            }
+//            HStack(spacing: 2) {
+//                Text("\(product.formatedRating)").font(.title3)
+//                    .foregroundColor(.darkText)
+//                Text("(\(product.rating.manualCount))").font(.caption2)
+//                    .foregroundColor(.secondary)
+//                    .offset(y: 3)
+//            }
         }.padding(8)
+           
     }
 }
 
@@ -44,7 +45,7 @@ struct SmallProductImage: View {
         ZStack{
             Rectangle()
                 .fill(Color.white)
-                .frame(width: 170, height: 190, alignment: .center)
+                .frame(width: 150, height: 170, alignment: .center)
                 .cornerRadius(12)
                 .overlay(
                     ZStack {
@@ -59,7 +60,7 @@ struct SmallProductImage: View {
                                 Spacer()
                             }
                         }
-                    }.padding()
+                    }.padding(1)
                 )
         }
         .cornerRadius(12)
