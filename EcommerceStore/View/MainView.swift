@@ -20,18 +20,19 @@ struct MainView: View {
                     Image(systemName:"house")
                     Text("Home")
                 }
+            CatView()
+                  .environmentObject(cartItems)
+                  .tabItem {
+                      Image(systemName: "square.grid.2x2")
+                      Text("Category")
+                  }
             CartView(cartProducts: cartItems)
                 //.environmentObject(user)
                 .tabItem {
                     Image(systemName: "cart")
                     Text("Cart")
                 }
-          CatView()
-                .environmentObject(cartItems)
-                .tabItem {
-                    Image(systemName: "person")
-                    Text("Profil")
-                }
+         
         }
         .zIndex(10)
     }
