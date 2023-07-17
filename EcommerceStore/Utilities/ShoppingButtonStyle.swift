@@ -39,7 +39,7 @@ struct AddCartButtonStyle: ButtonStyle {
             }
         )
         .shadow(color: .gray, radius: 2, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
-        .cornerRadius(12)
+        .cornerRadius(5)
         .padding(.horizontal)
     }
 }
