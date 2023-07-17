@@ -16,7 +16,7 @@ struct ProductView: View {
     let product: Product
     var body: some View {
         ZStack {
-            Color("Blue").edgesIgnoringSafeArea(.bottom)
+            Color.secondaryBackground.edgesIgnoringSafeArea(.bottom)
             VStack {
                 Spacer()
                 HStack{
@@ -31,8 +31,8 @@ struct ProductView: View {
                 ProductImage(imageURL: product.imageURL).padding(.top)
                     .environmentObject(cart)
                 ZStack {
-                    Color("Blue").edgesIgnoringSafeArea(.bottom)
-                        .cornerRadius(25)
+                    Color.secondaryBackground.edgesIgnoringSafeArea(.bottom)
+                        .cornerRadius(5)
                         .shadow(color: .accentColor.opacity(0.2), radius: 3, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                     VStack(spacing: 0){
                         Text(product.title)
@@ -88,7 +88,7 @@ struct ProductImage: View {
             Rectangle()
                 .fill(Color.white)
                 .frame(width: 260, height: 300, alignment: .center)
-                .cornerRadius(12)
+                .cornerRadius(5)
                 .overlay(
                     ZStack {
                         ProgressView()
@@ -100,7 +100,7 @@ struct ProductImage: View {
                                     .compositingGroup()
                                     .clipped(antialiased: true)
                                     .aspectRatio(contentMode: .fit)
-                                    .cornerRadius(12)
+                                    .cornerRadius(5)
                                     .padding()
                                 Spacer()
                             }
@@ -108,7 +108,8 @@ struct ProductImage: View {
                     }
                 )
         }
-        .cornerRadius(12)
+        .cornerRadius(5)
+        .shadow(color: .gray, radius: 2, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
         .onAppear {
             imageLoader.loadImage(with: imageURL)
         }

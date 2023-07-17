@@ -33,13 +33,13 @@ struct ProductList: View {
                         .foregroundColor(.white)
                         .padding(8)
                         .background(Color("green"))
-                        .cornerRadius(18)
+                        .cornerRadius(5)
                     }).accessibility(identifier: "Add to cart\(product.id)")
                 }
                 .padding(.vertical,5)
                 .padding(.horizontal,5)
-                .background(Color("Blue")
-                                .cornerRadius(16)
+                .background(Color.white
+                                .cornerRadius(5)
                                 .shadow(color: .darkText.opacity(0.05), radius: 2, x: 0.0, y: 0.0))
             }
             .padding()

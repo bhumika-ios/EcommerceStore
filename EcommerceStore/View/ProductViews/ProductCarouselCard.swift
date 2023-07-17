@@ -29,10 +29,10 @@ struct ProductCarouselCard: View {
                 }.foregroundColor(.darkText)
                 Spacer()
             }
-            Color("Blue")
+            Color.secondaryBackground
                 .blendMode(.overlay)
         }.frame(height: 140)
-        .cornerRadius(18)
+        .cornerRadius(5)
         .shadow(color: .darkText.opacity(0.1), radius: 4, x: 1, y: 2)
     }
 }
@@ -51,7 +51,7 @@ struct ProductCarouselImage: View {
             Rectangle()
                 .fill(Color.white)
                 .frame(width: 100, height: 140, alignment: .center)
-                .cornerRadius(12)
+                .cornerRadius(5)
                 .overlay(
                     ZStack {
                         ProgressView()
@@ -64,7 +64,7 @@ struct ProductCarouselImage: View {
                                     .clipped(antialiased: true)
                                     .aspectRatio(contentMode: .fill)
                                     .clipped()
-                                    .cornerRadius(12)
+                                    .cornerRadius(5)
                                     .padding()
                                 Spacer()
                             }
@@ -72,7 +72,7 @@ struct ProductCarouselImage: View {
                     }
                 )
         }
-        .cornerRadius(12)
+        .cornerRadius(5)
         .onAppear {
             imageLoader.loadImage(with: imageURL)
         }
