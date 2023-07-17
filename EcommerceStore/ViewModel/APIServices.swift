@@ -31,6 +31,19 @@ class APIServices: APIServicesProtocol {
         }
         loadURLAndDecode(url: url, completion: completion)
     }
+    func fetchCategories(){
+        guard let url = URL(string: baseURL+"/categories") else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data else { return }
+            
+            do {
+               let categories = try JSONDecoder().decode([String].self, from: data)
+            } catch {
+                print("Error decoding categories:", error)
+            }
+        }.resume()
+    }
 }
 
 
