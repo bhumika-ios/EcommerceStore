@@ -38,6 +38,7 @@ struct ProductList: View {
                 }
                 .padding(.vertical,5)
                 .padding(.horizontal,5)
+                .padding(.vertical)
                 .background(Color.white
                                 .cornerRadius(5)
                                 .shadow(color: .darkText.opacity(0.05), radius: 2, x: 0.0, y: 0.0))

@@ -12,12 +12,14 @@ struct CategoryView: View {
     @EnvironmentObject var cart: CartViewModel
     @StateObject var productListObject = ProductsListObject()
     let categories: [ProductListEndpoint] = [.jewelery, .electronics, .men, .women]
+    @State private var selectedCategory: ProductListEndpoint?
     
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVStack {
-                    ForEach(categories, id: \.self) { category in
+                    ForEach(categories, id: \.self.rawValue
+                    ) { category in
                         NavigationLink(destination: ProductListView(productListObject: productListObject, category: category).environmentObject(cart)) {
                             CategoryRowView(category: category)
                         }
@@ -29,11 +31,16 @@ struct CategoryView: View {
         .onAppear {
             loadProductsForCategories()
         }
+        .onChange(of: selectedCategory) { newCategory in
+            if let category = newCategory {
+                productListObject.reload(with: category)
+            }
+        }
     }
     
     private func loadProductsForCategories() {
         categories.forEach { category in
-            productListObject.loadProducts(with: category)
+            productListObject.reload(with: category)
         }
     }
 }
@@ -50,25 +57,32 @@ struct ProductListView: View {
     @EnvironmentObject var cart: CartViewModel
     
     var body: some View {
-        ZStack {
-            Color.background.edgesIgnoringSafeArea(.all)
-            ScrollView {
-                VStack {
-                    if productListObject.products != nil {
-                        ProductList(products: productListObject.products!)
-                            .environmentObject(cart)
-                    } else {
-                        LoadingView(isLoading: productListObject.isLoading, error: productListObject.error) {
-                            productListObject.reload(with: category)
+        NavigationView{
+            ZStack {
+                Color.background.edgesIgnoringSafeArea(.all)
+                ScrollView {
+                    VStack {
+                        if productListObject.products != nil {
+                            ProductList(products: productListObject.products!)
+                                .environmentObject(cart)
+                        } else {
+                            LoadingView(isLoading: productListObject.isLoading, error: productListObject.error) {
+                                productListObject.loadProducts(with: category)
+                            }
                         }
                     }
                 }
-            }
-            .onAppear {
-                DispatchQueue.main.async {
-                    productListObject.loadProducts(with: category)
+                .onAppear {
+                    DispatchQueue.main.async {
+                        productListObject.loadProducts(with: category)
+                    }
                 }
             }
+            .onChange(of: category) { newCategory in
+                productListObject.loadProducts(with: newCategory)
+            }
+            .navigationTitle(category.rawValue)
+            .padding(.top)
         }
     }
 }
@@ -78,6 +92,7 @@ struct CategoryRowView: View {
     
     var body: some View {
         ZStack(alignment: .leading) {
+            
             category.image
                 .resizable()
                 .frame(width: 300, height: 100)
@@ -108,3 +123,4 @@ extension ProductListEndpoint {
         }
     }
 }
+

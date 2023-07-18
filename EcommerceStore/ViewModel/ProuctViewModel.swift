@@ -55,12 +55,15 @@ class  ProductsListObject: ObservableObject {
             }
         }
     }
-    func reload(with category: ProductListEndpoint) {
+    func reload(with url: ProductListEndpoint) {
             let newProductListObject = ProductsListObject()
-            newProductListObject.loadProducts(with: category)
+            newProductListObject.loadProducts(with: url)
             products = newProductListObject.products
             isLoading = newProductListObject.isLoading
             error = newProductListObject.error
         }
+    func clearProducts() {
+        products = nil
+    }
 }
 

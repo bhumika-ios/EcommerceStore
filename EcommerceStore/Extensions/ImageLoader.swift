@@ -25,20 +25,29 @@ class ImageLoader: ObservableObject {
             return
         }
         
-        DispatchQueue.main.async { [weak self] in
+        isLoading = true
+        
+        URLSession.shared.dataTask(with: url) { [weak self] (data, response, error) in
             guard let self = self else { return }
-            do {
-                let data = try Data(contentsOf: url)
-                guard let image = UIImage(data: data) else {
-                    return
+            
+            defer {
+                DispatchQueue.main.async {
+                    self.isLoading = false
                 }
-                self.imageCache.setObject(image, forKey: urlString as AnyObject)
-                DispatchQueue.main.async { [weak self] in
-                    self?.image = image
-                }
-            } catch {
-                print(error.localizedDescription)
             }
-        }
+            
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            if let data = data, let image = UIImage(data: data) {
+                self.imageCache.setObject(image, forKey: urlString as AnyObject)
+                
+                DispatchQueue.main.async {
+                    self.image = image
+                }
+            }
+        }.resume()
     }
 }

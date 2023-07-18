@@ -39,6 +39,7 @@ class APIServices: APIServicesProtocol {
             
             do {
                let categories = try JSONDecoder().decode([String].self, from: data)
+                print(categories)
             } catch {
                 print("Error decoding categories:", error)
             }
