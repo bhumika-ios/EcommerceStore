@@ -20,7 +20,7 @@ struct MainView: View {
                     Image(systemName:"house")
                     Text("Home")
                 }
-            CatView()
+           CategoryView(productListObject: products)
                   .environmentObject(cartItems)
                   .tabItem {
                       Image(systemName: "square.grid.2x2")

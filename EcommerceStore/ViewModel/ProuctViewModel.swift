@@ -33,7 +33,8 @@ class  ProductsListObject: ObservableObject {
     /// - Parameter url: category of products
     func loadProducts(with url: ProductListEndpoint){
         self.products = nil
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+ 
             self.isLoading = true
         }
         productListServices.fetchProducts(from: url) { (result) in
@@ -54,5 +55,12 @@ class  ProductsListObject: ObservableObject {
             }
         }
     }
+    func reload(with category: ProductListEndpoint) {
+            let newProductListObject = ProductsListObject()
+            newProductListObject.loadProducts(with: category)
+            products = newProductListObject.products
+            isLoading = newProductListObject.isLoading
+            error = newProductListObject.error
+        }
 }
 

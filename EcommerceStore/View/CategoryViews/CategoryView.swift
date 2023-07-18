@@ -6,71 +6,92 @@
 //
 
 import SwiftUI
+import Combine
 
 struct CategoryView: View {
-//    let category: String
-//    @State private var categoryProducts: [Product] = []
-   
-    @ObservedObject var productListObject = ProductsListObject()
-       let categories: [ProductListEndpoint] = [.jewelery, .electronics, .men, .women]
-      // let catImage: [] = ["mb","mb"]
-       var body: some View {
-           NavigationView {
-               ScrollView {
-                              LazyVStack {
-                                  ForEach(categories, id: \.self) { category in
-                                      NavigationLink(destination: ProductListView(category: category)) {
-                                          CategoryRowView(category: category)
-                                      }
-                                  }
-                              }
-               }
-                           .navigationTitle("Categories")
-                       }
-                       .onAppear {
-                           DispatchQueue.main.async {
-                               loadProductsForCategories()
-                           }
-                       }
-                   }
-                   
-                   private func loadProductsForCategories() {
-                       categories.forEach { category in
-                           productListObject.loadProducts(with: category)
-                       }
-                   }
-               }
-   struct ProductListView: View {
-       @ObservedObject var productListObject = ProductsListObject()
-       let category: ProductListEndpoint
-       @EnvironmentObject var cart: CartViewModel
-       @State var pickedCategory: ProductListEndpoint = .jewelery
-       var body: some View {
-           ZStack{
-               Color.background.edgesIgnoringSafeArea(.all)
-               ScrollView{
-                   VStack {
-                       
-                       if productListObject.products != nil {
-                           ProductList(products: productListObject.products!)
-                               .environmentObject(cart)
-                       } else {
-                           LoadingView(isLoading: productListObject.isLoading, error: productListObject.error){ productListObject.loadProducts(with: pickedCategory)
-                           }
-                       }
-                   }
-                   
-                   
-                   
-                   .onAppear {
-                       DispatchQueue.main.async {
-                           productListObject.loadProducts(with: category)
-                       }
-                   }
-               }
-           }
-       }
-   }
+    @EnvironmentObject var cart: CartViewModel
+    @StateObject var productListObject = ProductsListObject()
+    let categories: [ProductListEndpoint] = [.jewelery, .electronics, .men, .women]
+    
+    var body: some View {
+        NavigationView {
+            ScrollView {
+                LazyVStack {
+                    ForEach(categories, id: \.self) { category in
+                        NavigationLink(destination: ProductListView(productListObject: productListObject, category: category).environmentObject(cart)) {
+                            CategoryRowView(category: category)
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Categories")
+        }
+        .onAppear {
+            loadProductsForCategories()
+        }
+    }
+    
+    private func loadProductsForCategories() {
+        categories.forEach { category in
+            productListObject.loadProducts(with: category)
+        }
+    }
+}
+
+struct CategoryView_Previews: PreviewProvider {
+    static var previews: some View {
+        CategoryView()
+    }
+}
+
+struct ProductListView: View {
+    @ObservedObject var productListObject: ProductsListObject
+    let category: ProductListEndpoint
+    @EnvironmentObject var cart: CartViewModel
+    
+    var body: some View {
+        ZStack {
+            Color.background.edgesIgnoringSafeArea(.all)
+            ScrollView {
+                VStack {
+                    if productListObject.products != nil {
+                        ProductList(products: productListObject.products!)
+                            .environmentObject(cart)
+                    } else {
+                        LoadingView(isLoading: productListObject.isLoading, error: productListObject.error) {
+                            productListObject.reload(with: category)
+                        }
+                    }
+                }
+            }
+            .onAppear {
+                DispatchQueue.main.async {
+                    productListObject.loadProducts(with: category)
+                }
+            }
+        }
+    }
+}
+
+struct CategoryRowView: View {
+    let category: ProductListEndpoint
+    
+    var body: some View {
+        ZStack(alignment: .leading) {
+            category.image
+                .resizable()
+                .frame(width: 300, height: 100)
+                .cornerRadius(5)
+            
+            Text(category.rawValue)
+                .font(.system(size: 32, weight: .bold))
+                .foregroundColor(.white)
+                .padding(.bottom, 4)
+                .alignmentGuide(.leading) { _ in 0 }
+        }
+    }
+}
+
 extension ProductListEndpoint {
     var image: Image {
         switch self {
@@ -84,26 +105,6 @@ extension ProductListEndpoint {
             return Image("MenClothes")
         case .women:
             return Image("womenClothes")
-        }
-    }
-}
-struct CategoryRowView: View {
-    let category: ProductListEndpoint
-    
-    var body: some View {
-        ZStack(alignment: .leading) {
-            
-                   category.image
-                       .resizable()
-                       .frame(width: 300, height: 100)
-                       .cornerRadius(5)
-                   
-                   Text(category.rawValue)
-                        .font(.system(size: 32,weight: .bold))
-                       .foregroundColor(.white)
-                       .padding(.bottom, 4)
-                       .alignmentGuide(.leading) { _ in 0 }
-               
         }
     }
 }

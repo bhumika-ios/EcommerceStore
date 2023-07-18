@@ -52,6 +52,7 @@ struct ProductCarouselImage: View {
                 .fill(Color.white)
                 .frame(width: 100, height: 140, alignment: .center)
                 .cornerRadius(5)
+            
                 .overlay(
                     ZStack {
                         ProgressView()
@@ -72,6 +73,7 @@ struct ProductCarouselImage: View {
                     }
                 )
         }
+       
         .cornerRadius(5)
         .onAppear {
             imageLoader.loadImage(with: imageURL)
