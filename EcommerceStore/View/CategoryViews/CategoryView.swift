@@ -22,12 +22,14 @@ struct CategoryView: View {
                     ) { category in
                         NavigationLink(destination: ProductListView(productListObject: productListObject, category: category).environmentObject(cart)) {
                             CategoryRowView(category: category)
+                                .padding(.top)
                         }
                     }
                 }
             }
             .navigationTitle("Categories")
         }
+      
         .onAppear {
             loadProductsForCategories()
         }
@@ -57,9 +59,9 @@ struct ProductListView: View {
     @EnvironmentObject var cart: CartViewModel
     
     var body: some View {
-        NavigationView{
+    //    NavigationStack{
             ZStack {
-                Color.background.edgesIgnoringSafeArea(.all)
+                Color.background.ignoresSafeArea(.all)
                 ScrollView {
                     VStack {
                         if productListObject.products != nil {
@@ -71,21 +73,33 @@ struct ProductListView: View {
                             }
                         }
                     }
-                }
+             //   }
                 .onAppear {
                     DispatchQueue.main.async {
                         productListObject.loadProducts(with: category)
                     }
                 }
+              
             }
             .onChange(of: category) { newCategory in
                 productListObject.loadProducts(with: newCategory)
             }
-            .navigationTitle(category.rawValue)
-            .padding(.top)
-        }
+          //  .navigationTitle(category.rawValue)
+           // .navigationBarTitleDisplayMode(.inline)
+            
+            }
+        .navigationTitle(category.rawValue)
+      //  .navigationBarHidden(true)
+//        .toolbar{
+//            ToolbarItem(placement: .bottomBar){
+//                Text(category.rawValue)
+//                    .fontWeight(.bold)
+//                    .multilineTextAlignment(.center)
+//            }
+//        }
     }
 }
+
 
 struct CategoryRowView: View {
     let category: ProductListEndpoint
