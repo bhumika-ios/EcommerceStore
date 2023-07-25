@@ -11,6 +11,7 @@ import SwiftUI
 struct ProductView: View {
     @EnvironmentObject var cart: CartViewModel
     @Environment(\.presentationMode) var presentation
+    @State private var showSuccessMessage = false
     // deprecated in iOS 15 we should use @Environment(.\dismiss) var dismiss
     @State private var quantity: Int = 1
     let product: Product
@@ -64,16 +65,37 @@ struct ProductView: View {
 //                            .padding()
 //                        }
                         Button(action: {
+                            withAnimation{
                             cart.addToCart(addedProduct: product, quantity: quantity)
+                           
+                                showSuccessMessage = true
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                              
+                                    showSuccessMessage = false
+                                }
+                                           }
                         }){
                             HStack {
                                 Text("Add to cart").bold()
                             }
-                        }.buttonStyle(AddCartButtonStyle())
+                        }.buttonStyle(AddCartButtonStyle(showSuccessMessage: showSuccessMessage))
                     }
+                  
                 }.edgesIgnoringSafeArea(.bottom)
                 Spacer()
+               
             }
+            if showSuccessMessage {
+                           Text("Successfully added to cart!")
+                            .foregroundColor(.white) // Set text color to white
+                            .padding()
+                                               .background(Color.black)
+                                               .cornerRadius(8)
+                                               .frame(width: 240, height: 40) // Set the frame here
+                                               .offset(y:265)
+                                       
+                       }
         }.navigationBarTitleDisplayMode(.large)
         // ajouter un navigation view vers le cart
     }

@@ -6,49 +6,79 @@
 //
 
 import SwiftUI
-
 struct CartListItem: View {
     @ObservedObject var cart: CartViewModel
     let product: Product
-    @State var quantity: Int = 0
+
     var body: some View {
         HStack(spacing: 16) {
             SmallCartListItemImage(imageURL: product.imageURL)
             VStack {
+                
                 Text(product.title)
-                    .font(.headline)
+                    .font(.system(size: 18))
+                    .fontWeight(.semibold)
                     .lineLimit(2)
-                Text("\((product.price * Double(quantity)).format(f: ".2")) $")
+                Text("\(product.price * Double(cart.cartProductDic[product] ?? 0)) $")
+                    .font(.system(size: 18))
+              //  Text("")
+                HStack{
+                    Text("Quantity")
+                        .font(.system(size: 12))
+                    Text("\(cart.cartProductDic[product] ?? 0)")
+                        .frame(width: 50, height: 50)
+                        .padding(.trailing)
+                    Stepper(
+                        onIncrement: {
+                            cart.changeQuantity(product: product, quantity: (cart.cartProductDic[product] ?? 0) + 1)
+                        },
+                        onDecrement: {
+                            cart.changeQuantity(product: product, quantity: max((cart.cartProductDic[product] ?? 0) - 1, 1))
+                        },
+                        label: {
+                            
+                            Text("\(cart.cartProductDic[product] ?? 0)")
+                            
+                        }
+                    )
+                    .frame(width: 50, height: 50)
+                    .padding(.trailing)
+                }
             }
             Spacer()
-            Picker(selection: $quantity, label: Text("Picker"), content: {
-                ForEach(1...10, id:\.self){quantity in
-                    Text("\(quantity)")
-                        .tag(quantity)
-                }.onChange(of: quantity, perform: { value in
-                    cart.changeQuantity(product: product, quantity: quantity)
-                })
-            })
-            .pickerStyle(WheelPickerStyle())
-         //   .accentColor(.white)
-            .frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            .clipped()
-            .padding(.trailing)
-        }
-        .padding(.vertical)
-        .padding(.leading, 8)
-        .background(Color("Blue"))
-        .onAppear{
-            if let quantity = cart.cartProductDic[product]{
-                self.quantity = quantity
+            VStack{
+//                Text("\(cart.cartProductDic[product] ?? 0)")
+//                               .frame(width: 50, height: 50)
+//                               .padding(.trailing)
+//                Stepper(
+//                    onIncrement: {
+//                        cart.changeQuantity(product: product, quantity: (cart.cartProductDic[product] ?? 0) + 1)
+//                    },
+//                    onDecrement: {
+//                        cart.changeQuantity(product: product, quantity: max((cart.cartProductDic[product] ?? 0) - 1, 1))
+//                    },
+//                    label: {
+//
+//                        Text("\(cart.cartProductDic[product] ?? 0)")
+//
+//                    }
+//                )
+//                .frame(width: 50, height: 50)
+//                .padding(.trailing)
             }
         }
+        .padding(.vertical)
+        .padding(.horizontal)
+        .padding(.leading, 8)
+        .background(Color.secondaryBackground)
     }
 }
 
+
+
 struct CartListItem_Previews: PreviewProvider {
     static var previews: some View {
-        CartListItem(cart: CartViewModel(), product: Product.sampleProducts[1], quantity: 3)
+        CartListItem(cart: CartViewModel(), product: Product.sampleProducts[1])
     }
 }
 
@@ -59,7 +89,7 @@ struct SmallCartListItemImage: View {
         ZStack{
             Rectangle()
                 .fill(Color.white)
-                .frame(width: 100, height: 100, alignment: .center)
+                .frame(width: 100, height: 140, alignment: .center)
                 .cornerRadius(5)
                 .overlay(
                     ZStack {

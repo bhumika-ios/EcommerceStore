@@ -7,38 +7,42 @@
 
 import SwiftUI
 
-/// Add a styling to the add cart button in product view, change to green and success when added to the cart
 struct AddCartButtonStyle: ButtonStyle {
+    var showSuccessMessage: Bool
+    
     func makeBody(configuration: Self.Configuration) -> some View {
-        VStack(alignment: .leading) {
+        VStack() {
             HStack {
                 Spacer()
                 Image(systemName: configuration.isPressed ? "cart.badge.plus" : "cart")
+                   
+              //  Spacer()
+                Text("Add to Cart").bold()
                 Spacer()
             }
-            HStack {
-                Spacer()
-                if configuration.isPressed {
-                    Text("Added to Cart").bold()
-                        .foregroundColor(.tertiary)
-                } else {
-                    configuration.label
-                }
-                Spacer()
-            }
+//            HStack {
+//                Spacer()
+//                if configuration.isPressed {
+//                    Text("Go to Cart").bold() // Change the text here
+//                        .foregroundColor(.tertiary)
+//                } else {
+//                    configuration.label
+//                }
+//                Spacer()
+//            }
         }
         .foregroundColor(.tertiary)
         .padding()
         .background(
             Group{
                 if configuration.isPressed {
-                    Color.red
+                    Color("green")
                 } else {
                     Color("green")
                 }
             }
         )
-        .shadow(color: .gray, radius: 2, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+        .shadow(color: .gray, radius: 2, x: 0.0, y: 0.0)
         .cornerRadius(5)
         .padding(.horizontal)
     }

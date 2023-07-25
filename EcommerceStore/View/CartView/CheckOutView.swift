@@ -23,7 +23,7 @@ struct CheckOutView: View {
     }
     var body: some View {
         VStack {
-            Spacer()
+           Spacer()
             ZStack{
                 Color.secondaryBackground.edgesIgnoringSafeArea(.bottom)
                 Color.secondaryBackground.opacity(0.3).edgesIgnoringSafeArea(.bottom)
@@ -37,64 +37,83 @@ struct CheckOutView: View {
                         .background(Color.secondaryBackground)
                         .clipShape(Circle())
                         Spacer()
-                    }.padding()
+                    }
+                    //.padding()
                     Spacer()
+                    ScrollView{
                     VStack{
-                        ForEach(products){product in
-                            HStack {
-                                Text(product.title)
-                                    .font(.caption)
-                                    .lineLimit(1)
-                                Spacer()
-                                Text("\(product.price.format(f: ".2"))$").bold()
+                      
+                            ForEach(products){product in
+                                HStack {
+                                    Text(product.title)
+                                        .font(.system(size: 16))
+                                        .lineLimit(1)
+                                    Divider()
+                                    Spacer()
+                                    Text("\(product.price.format(f: ".2"))$").bold()
+                                        .font(.system(size: 18))
+                                    
+                                }.padding(.horizontal)
+                                    .padding(.vertical)
+                                    .foregroundColor(.darkText)
+                                   // .background(Color.background)
+                                    .cornerRadius(5)
+                                    .padding(.horizontal)
                                 
-                            }.padding(.horizontal)
-                                .padding(.vertical)
-                                .foregroundColor(.darkText)
-                                .background(Color.background)
-                                .cornerRadius(5)
-                                .padding(.horizontal)
-                            
+                            }
                         }
                     }
-                    .padding()
+                  //  .padding()
                     VStack{
                         HStack{
                             Text("Taxes:")
+                                
                             Spacer()
                             Text("\(taxes.format(f: ".02"))$")
+                               
                                 //.font(.caption)
                         }
+                        .font(.system(size: 18))
                             //.padding(.top)
                         HStack{
                             Text("Delivery: ")
+                               
                             Spacer()
                             Text("\(delivery.format(f: ".02"))$")
+                               
                                // .font(.caption)
                         }
+                        .font(.system(size: 18))
+                        Divider()
                         HStack{
-                            Text("Final Price: ")
+                            Text("Total Price: ")
+                                .font(.system(size: 18))
                             Spacer()
                             Text("\((price + taxes + delivery).format(f: ".02"))$")
                                 .fontWeight(.bold)
-                              //  .font(.caption)
+                                .font(.system(size: 22))
                         }
                     }
                     .padding(.horizontal)
                     //.padding()
+                    .padding(.vertical)
                     .background(Color.background)
                     .cornerRadius(5)
+                   // .padding(.vertical)
                     .padding(.horizontal)
                     Button(action: {print("Paying ...")}) {
                         Text("Click Here to Pay").bold()
+                            .foregroundColor(.white)
                             .padding()
-                            .background(Color.secondaryBackground)
+                            .background(Color("green"))
                             .cornerRadius(5)
-                    }.padding()
+                            .padding()
+                    }
+                    //.padding()
                 }.foregroundColor(.darkText)
                 Spacer()
             }.cornerRadius(5)
-            .frame(height: 300)
+            .frame(height: 500)
         }
         .transition(.move(edge: .bottom))
         .zIndex(20)

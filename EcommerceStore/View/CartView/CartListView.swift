@@ -13,32 +13,36 @@ struct CartListView: View {
     @Binding var showDelete: Bool
     var body: some View {
         let productsDic = products.map({$0.key})
-        List {
-            ForEach(productsDic, id: \.self){key in
-                ZStack {
-                    Button(action: {
-                        withAnimation{
-                            cart.removeFromCart(toRemove: key)
-                        }
-                    }){
-                        HStack {
-                            VStack {
-                                Spacer()
-                                Image(systemName: "xmark")
-                                    .imageScale(.large)
-                                    .foregroundColor(.white)
+        ScrollView{
+            LazyVStack {
+                ForEach(productsDic, id: \.self){key in
+                    ZStack {
+                        Button(action: {
+                            withAnimation{
+                                cart.removeFromCart(toRemove: key)
+                            }
+                        }){
+                            HStack {
+                                VStack {
+                                    Spacer()
+                                    Image(systemName: "xmark")
+                                        .imageScale(.large)
+                                        .foregroundColor(.red)
+                                    Spacer()
+                                }
+                               // .frame(width: 100)
+                               // .background(Color.secondaryBackground)
+                                //.frame(width: 100)
                                 Spacer()
                             }
-                            .frame(width: 100)
-                            .background(Color.red)
-                            .frame(width: 100)
-                            Spacer()
                         }
-                    }.disabled(!showDelete)
-                    CartListItem(cart: cart,product: key, quantity: products[key] ?? 0)
-                        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        .offset(x:showDelete ? 100 : 0)
-                }.listRowBackground(Color.secondaryBackground)
+                        .padding()
+                        .disabled(!showDelete)
+                        CartListItem(cart: cart,product: key)
+                            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                            .offset(x:showDelete ? 50 : 0)
+                    }.listRowBackground(Color.secondaryBackground)
+                }
             }
         }
     }
