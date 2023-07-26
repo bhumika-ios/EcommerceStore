@@ -19,7 +19,9 @@ struct CartListItem: View {
                     .font(.system(size: 18))
                     .fontWeight(.semibold)
                     .lineLimit(2)
-                Text("\(product.price * Double(cart.cartProductDic[product] ?? 0)) $")
+              //  Text("\(product.price * Double(cart.cartProductDic[product] ?? 0)) $")
+                Text(String(format: "%.2f $", product.price * Double(cart.cartProductDic[product] ?? 0)))
+
                     .font(.system(size: 18))
               //  Text("")
                 HStack{
