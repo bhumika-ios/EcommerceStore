@@ -58,5 +58,6 @@ class  CartViewModel: ObservableObject {
     func removeFromCart(toRemove: Product){
         cartProductDic.removeValue(forKey: toRemove)
     }
+    
 }
 
