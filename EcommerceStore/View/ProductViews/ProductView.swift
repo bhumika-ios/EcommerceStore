@@ -49,7 +49,7 @@ struct ProductView: View {
 //                                .offset(y: 3)
 //                        }
                         .padding(8)
-                        Text(product.description).italic()
+                        Text(product.description)
                             .foregroundColor(.secondary)
                             .padding()
                             .multilineTextAlignment(.center)
@@ -70,7 +70,7 @@ struct ProductView: View {
                            
                                 showSuccessMessage = true
                             
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                               
                                     showSuccessMessage = false
                                 }

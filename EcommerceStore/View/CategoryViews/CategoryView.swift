@@ -16,13 +16,16 @@ struct CategoryView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVStack {
-                    ForEach(categories, id: \.self.rawValue
-                    ) { category in
-                        NavigationLink(destination: ProductListView(productListObject: productListObject, category: category).environmentObject(cart)) {
-                            CategoryRowView(category: category)
-                                .padding(.top)
+            ZStack{
+                Color.background.edgesIgnoringSafeArea(.all)
+                ScrollView {
+                    LazyVStack {
+                        ForEach(categories, id: \.self.rawValue
+                        ) { category in
+                            NavigationLink(destination: ProductListView(productListObject: productListObject, category: category).environmentObject(cart)) {
+                                CategoryRowView(category: category)
+                                    .padding(.top)
+                            }
                         }
                     }
                 }
@@ -105,19 +108,32 @@ struct CategoryRowView: View {
     let category: ProductListEndpoint
     
     var body: some View {
-        ZStack(alignment: .leading) {
-            
-            category.image
-                .resizable()
-                .frame(width: 300, height: 100)
-                .cornerRadius(5)
-            
-            Text(category.rawValue)
-                .font(.system(size: 32, weight: .bold))
-                .foregroundColor(.white)
-                .padding(.bottom, 4)
-                .alignmentGuide(.leading) { _ in 0 }
-        }
+        VStack(alignment: .leading) {
+            HStack{
+                category.image
+                    .resizable()
+                    .frame(width: 70, height: 70)
+                    .cornerRadius(5)
+                    .alignmentGuide(.leading) { _ in 0 }
+                    .offset(x:-16)
+               // Spacer()
+                Text(category.rawValue)
+                    .font(.system(size: 22, weight: .bold))
+                    .foregroundColor(.black)
+                    .padding(.bottom, 4)
+                   // .alignmentGuide(.leading) { _ in 0 }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .foregroundColor(Color("green"))
+            }
+           
+            .multilineTextAlignment(.leading)
+            .padding()
+            .frame(width: 300, height: 70)
+            .background(Color.white)
+            .cornerRadius(5)
+         
+        } .alignmentGuide(.leading) { _ in 0 }
     }
 }
 
@@ -127,13 +143,13 @@ extension ProductListEndpoint {
         case .all:
             return Image(systemName: "")
         case .jewelery:
-            return Image("jewelery")
+            return Image("jwel1")
         case .electronics:
-            return Image("electronic1")
+            return Image("elec2")
         case .men:
-            return Image("MenClothes")
+            return Image("men2")
         case .women:
-            return Image("womenClothes")
+            return Image("women2")
         }
     }
 }

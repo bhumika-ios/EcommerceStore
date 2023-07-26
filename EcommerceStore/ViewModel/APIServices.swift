@@ -53,9 +53,9 @@ enum ProductListEndpoint: String, CaseIterable {
     
     case all = "All"
     case jewelery = "Jewelery"
-    case electronics = "electronics"
-    case men = "men's clothing"
-    case women = "women's clothing"
+    case electronics = "Electronics"
+    case men = "Men's Clothing"
+    case women = "Women's Clothing"
     
     var description: String {
         switch self {

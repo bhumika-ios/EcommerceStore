@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CheckOutView: View {
     @EnvironmentObject var cart: CartViewModel
+    
     let products: [Product]
     let price:Double
     var taxes: Double {
@@ -40,31 +41,37 @@ struct CheckOutView: View {
                     }
                     //.padding()
                     Spacer()
-                    ScrollView{
-                    VStack{
-                      
-                            ForEach(products){product in
-                                HStack {
-                                    Text(product.title)
-                                        .font(.system(size: 16))
-                                        .lineLimit(1)
-                                    Divider()
-                                    Spacer()
-                                    Text("\(product.price.format(f: ".2"))$").bold()
-                                        .font(.system(size: 18))
-                                    
-                                }.padding(.horizontal)
-                                    .padding(.vertical)
-                                    .foregroundColor(.darkText)
-                                   // .background(Color.background)
-                                    .cornerRadius(5)
-                                    .padding(.horizontal)
-                                
-                            }
-                        }
-                    }
+//                    ScrollView{
+//                    VStack{
+//
+//                            ForEach(products){product in
+//                                HStack {
+//                                    Text(product.title)
+//                                        .font(.system(size: 16))
+//                                        .lineLimit(1)
+//                                    Divider()
+//                                    Spacer()
+//                                    Text("\(product.price.format(f: ".2"))$").bold()
+//                                        .font(.system(size: 18))
+//
+//                                }.padding(.horizontal)
+//                                    .padding(.vertical)
+//                                    .foregroundColor(.darkText)
+//                                   // .background(Color.background)
+//                                    .cornerRadius(5)
+//                                    .padding(.horizontal)
+//
+//                            }
+//                        }
+//                    }
                   //  .padding()
                     VStack{
+                        
+                        HStack{
+                            Text("Total:")
+                            Spacer()
+                            Text("\(cart.totalPrice.format(f: ".2"))$")
+                        }
                         HStack{
                             Text("Taxes:")
                                 
@@ -113,7 +120,7 @@ struct CheckOutView: View {
                 }.foregroundColor(.darkText)
                 Spacer()
             }.cornerRadius(5)
-            .frame(height: 500)
+            .frame(height: 250)
         }
         .transition(.move(edge: .bottom))
         .zIndex(20)
