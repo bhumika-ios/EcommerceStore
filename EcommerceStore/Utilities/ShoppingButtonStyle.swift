@@ -36,9 +36,9 @@ struct AddCartButtonStyle: ButtonStyle {
         .background(
             Group{
                 if configuration.isPressed {
-                    Color("green")
+                    Color.green
                 } else {
-                    Color("green")
+                    Color.green
                 }
             }
         )

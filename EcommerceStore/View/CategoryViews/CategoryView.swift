@@ -124,7 +124,7 @@ struct CategoryRowView: View {
                    // .alignmentGuide(.leading) { _ in 0 }
                 Spacer()
                 Image(systemName: "chevron.right")
-                    .foregroundColor(Color("green"))
+                    .foregroundColor(Color.green)
             }
            
             .multilineTextAlignment(.leading)

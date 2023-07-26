@@ -112,7 +112,7 @@ struct CheckOutView: View {
                         Text("Click Here to Pay").bold()
                             .foregroundColor(.white)
                             .padding()
-                            .background(Color("green"))
+                            .background(Color.green)
                             .cornerRadius(5)
                             .padding()
                     }

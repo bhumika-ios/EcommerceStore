@@ -45,7 +45,7 @@ struct CartView: View {
                     }.padding()
                     .foregroundColor(.tertiary)
                 })
-                .background(Color("green"))
+                .background(Color.green)
                 .cornerRadius(5)
                 .padding()
                 .disabled(cartProducts.cartProductDic.isEmpty)

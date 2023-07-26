@@ -26,13 +26,13 @@ struct ProductList: View {
                     }, label: {
                         HStack {
                             Image(systemName: "cart.badge.plus")
-                            Text("Add to cart")
+                            Text(cart.showShowcaseSheet ? "" : "Add to cart")
                                 .font(.caption)
                                 .bold()
                         }
                         .foregroundColor(.white)
                         .padding(8)
-                        .background(Color("green"))
+                        .background(Color.green)
                         .cornerRadius(5)
                     }).accessibility(identifier: "Add to cart\(product.id)")
                 }
