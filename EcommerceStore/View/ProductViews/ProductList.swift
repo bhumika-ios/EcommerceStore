@@ -25,7 +25,7 @@ struct ProductList: View {
                         }
                     }, label: {
                         HStack {
-                            Image(systemName: "cart.badge.plus")
+                            Image(systemName: "cart")
                             Text("Add to cart")
                                 .font(.caption)
                                 .bold()
