@@ -20,12 +20,15 @@ struct SearchView: View {
             }
             .background(Color.white)
             .cornerRadius(5)
+            .shadow(color: .darkText.opacity(0.25), radius: 2.5, x: 2, y: 2)
             
             Image(systemName: "camera")
                 .padding()
                 .foregroundColor(.black)
                 .background(Color.white)
                 .cornerRadius(5)
+                .shadow(color: .darkText.opacity(0.25), radius: 2.5, x: 2, y: 2)
+            
         }
         .padding()
     }

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AC147D5A2A5FC37D00EE3252 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC147D592A5FC37D00EE3252 /* CategoryView.swift */; };
-		AC147D5C2A601CF100EE3252 /* CatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC147D5B2A601CF100EE3252 /* CatView.swift */; };
 		AC3A9F8E2A5E6B880009DCFA /* LoadAndDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A9F8D2A5E6B880009DCFA /* LoadAndDecode.swift */; };
 		AC3A9F932A5E6C000009DCFA /* ShoppingButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A9F922A5E6C000009DCFA /* ShoppingButtonStyle.swift */; };
 		AC3A9F952A5E6D320009DCFA /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3A9F942A5E6D320009DCFA /* CartViewModel.swift */; };
@@ -61,7 +60,6 @@
 
 /* Begin PBXFileReference section */
 		AC147D592A5FC37D00EE3252 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
-		AC147D5B2A601CF100EE3252 /* CatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatView.swift; sourceTree = "<group>"; };
 		AC3A9F8D2A5E6B880009DCFA /* LoadAndDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAndDecode.swift; sourceTree = "<group>"; };
 		AC3A9F922A5E6C000009DCFA /* ShoppingButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingButtonStyle.swift; sourceTree = "<group>"; };
 		AC3A9F942A5E6D320009DCFA /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -127,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				AC147D592A5FC37D00EE3252 /* CategoryView.swift */,
-				AC147D5B2A601CF100EE3252 /* CatView.swift */,
 			);
 			path = CategoryViews;
 			sourceTree = "<group>";
@@ -407,7 +404,6 @@
 			files = (
 				AC8A20482A5D717E0098605D /* ProductView.swift in Sources */,
 				AC8A205E2A5D73BF0098605D /* Colors.swift in Sources */,
-				AC147D5C2A601CF100EE3252 /* CatView.swift in Sources */,
 				AC8A20532A5D72270098605D /* FillAndStrokeShape.swift in Sources */,
 				AC8A200A2A5D6DFF0098605D /* ContentView.swift in Sources */,
 				AC8A20442A5D71500098605D /* ProductList.swift in Sources */,

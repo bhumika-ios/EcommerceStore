@@ -131,7 +131,7 @@ struct ProductImage: View {
                 )
         }
         .cornerRadius(5)
-        .shadow(color: .gray, radius: 2, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
+        .shadow(color: .darkText.opacity(0.25), radius: 2.5, x: 2, y: 2)
         .onAppear {
             imageLoader.loadImage(with: imageURL)
         }

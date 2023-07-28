@@ -30,7 +30,7 @@ struct ProductCarousel: View {
                     }){
                         ProductCarouselCard(product: products[index])
                             .frame(width: (screenSize.width - 24))
-                            .shadow(color: .darkText.opacity(0.1), radius: 3, x: 1, y: 2)
+                            .shadow(color: .darkText.opacity(0.25), radius: 2.5, x: 2, y: 2)
                     }
                     .tag(index)
                 }

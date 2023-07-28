@@ -131,7 +131,9 @@ struct CategoryRowView: View {
             .padding()
             .frame(width: 300, height: 70)
             .background(Color.white)
+           
             .cornerRadius(5)
+            .shadow(color: .darkText.opacity(0.25), radius: 2.5, x: 2, y: 2)
          
         } .alignmentGuide(.leading) { _ in 0 }
     }

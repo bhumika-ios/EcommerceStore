@@ -41,7 +41,10 @@ struct ProductList: View {
                 .padding(.vertical)
                 .background(Color.white
                                 .cornerRadius(5)
-                                .shadow(color: .darkText.opacity(0.05), radius: 2, x: 0.0, y: 0.0))
+                                .shadow(color: .darkText.opacity(0.25), radius: 2.5, x: 2, y: 2))
+
+
+                           //     .shadow(color: .darkText.opacity(0.05), radius: 2, x: 0.0, y: 0.0))
             }
             .padding()
         }.sheet(item: $product){product in
