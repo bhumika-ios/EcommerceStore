@@ -29,7 +29,7 @@ struct ProductCarouselCard: View {
                 }.foregroundColor(.darkText)
                 Spacer()
             }
-            Color.secondaryBackground
+            Color.white
                 .blendMode(.overlay)
         }.frame(height: 140)
         .cornerRadius(5)
